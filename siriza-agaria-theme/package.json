@@ -1,0 +1,36 @@
+{
+  "name": "siriza-agaria",
+  "version": "1.0.0",
+  "description": "A luxury literary blog theme matching Siriza Agaria brand aesthetic",
+  "author": {
+    "name": "Siriza Agaria",
+    "email": "contacto@sirizagaria.com"
+  },
+  "license": "MIT",
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "keywords": [
+    "ghost-theme"
+  ],
+  "config": {
+    "posts_per_page": 12,
+    "image_sizes": {
+      "xs": {
+        "width": 150
+      },
+      "s": {
+        "width": 300
+      },
+      "m": {
+        "width": 600
+      },
+      "l": {
+        "width": 1000
+      },
+      "xl": {
+        "width": 2000
+      }
+    }
+  }
+}

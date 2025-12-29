@@ -1,0 +1,23 @@
+{{!< default}}
+
+{{#page}}
+    {{#if @page.show_title_and_feature_image}}
+        {{#if feature_image}}
+            <div class="post-hero">
+                <img src="{{feature_image}}" alt="{{title}}" class="post-hero-image">
+                <div class="post-hero-overlay"></div>
+                <div class="post-hero-content">
+                    <h1 class="post-hero-title">{{title}}</h1>
+                </div>
+            </div>
+        {{else}}
+            <div class="page-header">
+                <h1>{{title}}</h1>
+            </div>
+        {{/if}}
+    {{/if}}
+    
+    <article class="post-content">
+        {{content}}
+    </article>
+{{/page}}

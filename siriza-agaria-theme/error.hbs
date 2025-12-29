@@ -1,0 +1,16 @@
+{{!< default}}
+
+<section style="text-align: center; padding: 6rem 2rem;">
+    <h1 style="font-size: 4rem; margin-bottom: 1rem; color: var(--gold);">{{statusCode}}</h1>
+    <h2 style="font-size: 2rem; margin-bottom: 1rem;">{{message}}</h2>
+    <p style="font-size: 1.1rem; color: var(--cream); opacity: 0.8; margin-bottom: 2rem;">
+        {{#if errorDetails}}
+            {{errorDetails}}
+        {{else}}
+            No pudimos encontrar lo que buscas.
+        {{/if}}
+    </p>
+    <a href="{{@site.url}}" style="display: inline-block; padding: 0.75rem 2rem; background: var(--gold); color: var(--ink); border-radius: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s ease;">
+        Volver al Inicio
+    </a>
+</section>

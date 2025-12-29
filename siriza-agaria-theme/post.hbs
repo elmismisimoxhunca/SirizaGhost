@@ -1,0 +1,88 @@
+{{!< default}}
+
+{{#post}}
+    {{#if feature_image}}
+        <div class="post-hero">
+            <img src="{{feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" class="post-hero-image">
+            <div class="post-hero-overlay"></div>
+            <div class="post-hero-content">
+                <div class="post-meta">
+                    {{#if primary_tag}}
+                        <span class="post-category">{{primary_tag.name}}</span>
+                    {{/if}}
+                    <span class="post-date">{{date format="MMM DD, YYYY"}}</span>
+                    <span class="post-reading-time">{{reading_time}} min de lectura</span>
+                </div>
+                <h1 class="post-hero-title">{{title}}</h1>
+            </div>
+            {{#if feature_image_caption}}
+                <figcaption class="post-hero-caption">{{feature_image_caption}}</figcaption>
+            {{/if}}
+        </div>
+    {{else}}
+        <div style="padding: 3rem 0; border-bottom: 1px solid rgba(212, 168, 71, 0.1);">
+            <div class="post-meta">
+                {{#if primary_tag}}
+                    <span class="post-category">{{primary_tag.name}}</span>
+                {{/if}}
+                <span class="post-date">{{date format="MMM DD, YYYY"}}</span>
+                <span class="post-reading-time">{{reading_time}} min de lectura</span>
+            </div>
+            <h1 style="font-size: 2.5rem; margin-top: 1rem;">{{title}}</h1>
+        </div>
+    {{/if}}
+    
+    <article class="post-content">
+        {{content}}
+    </article>
+    
+    {{#if tags}}
+        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(212, 168, 71, 0.1);">
+            <h4 style="margin-bottom: 1rem; color: var(--gold);">Etiquetas</h4>
+            <div class="tags-list">
+                {{#foreach tags}}
+                    <a href="{{url}}" class="tag">{{name}}</a>
+                {{/foreach}}
+            </div>
+        </div>
+    {{/if}}
+    
+    {{#if primary_author}}
+        {{#if primary_author.bio}}
+            <div style="margin-top: 3rem; padding: 2rem; background: rgba(26, 26, 31, 0.5); border: 1px solid rgba(212, 168, 71, 0.1); border-radius: 8px;">
+                <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                    {{#if primary_author.profile_image}}
+                        <img src="{{primary_author.profile_image}}" alt="{{primary_author.name}}" style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover;">
+                    {{/if}}
+                    <div>
+                        <h4 style="margin-bottom: 0.5rem;">{{primary_author.name}}</h4>
+                        <p style="color: var(--cream); opacity: 0.8; margin-bottom: 1rem;">{{primary_author.bio}}</p>
+                        {{#if primary_author.website}}
+                            <a href="{{primary_author.website}}" style="color: var(--gold);">Visitar sitio web →</a>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    {{/if}}
+    
+    {{#if comments}}
+        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(212, 168, 71, 0.1);">
+            <h3 style="margin-bottom: 2rem;">Comentarios</h3>
+            {{comments}}
+        </div>
+    {{/if}}
+    
+    {{#get "posts" filter="id:-{{id}}" limit="3" as |related_posts|}}
+        {{#if related_posts}}
+            <div style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(212, 168, 71, 0.1);">
+                <h3 style="margin-bottom: 2rem;">Artículos Relacionados</h3>
+                <div class="posts-grid">
+                    {{#foreach related_posts}}
+                        {{> post-card}}
+                    {{/foreach}}
+                </div>
+            </div>
+        {{/if}}
+    {{/get}}
+{{/post}}

@@ -1,0 +1,69 @@
+{{!< default}}
+
+{{#tag}}
+    <section class="tag-hero">
+        <div class="tag-hero-content">
+            <h1>{{name}}</h1>
+            {{#if description}}
+                <p>{{description}}</p>
+            {{/if}}
+            <p style="color: var(--gold); opacity: 0.8;">{{plural ../pagination.total empty="Sin publicaciones" singular="% publicación" plural="% publicaciones"}}</p>
+        </div>
+    </section>
+{{/tag}}
+
+<section class="blog-posts">
+    {{#if posts}}
+        {{#if posts.length}}
+            <div class="posts-grid">
+                {{#foreach posts}}
+                    {{> post-card}}
+                {{/foreach}}
+            </div>
+            
+            <nav class="pagination">
+                {{#if pagination.prev}}
+                    <a href="{{page_url pagination.prev}}">← Anterior</a>
+                {{/if}}
+                
+                <span class="page-number">Página {{pagination.page}} de {{pagination.pages}}</span>
+                
+                {{#if pagination.next}}
+                    <a href="{{page_url pagination.next}}">Siguiente →</a>
+                {{/if}}
+            </nav>
+        {{/if}}
+    {{else}}
+        <div style="text-align: center; padding: 4rem 2rem;">
+            <h2>No hay publicaciones en esta categoría</h2>
+            <p>Vuelve pronto para nuevo contenido.</p>
+        </div>
+    {{/if}}
+</section>
+
+<style>
+.tag-hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(212, 168, 71, 0.1);
+}
+
+.tag-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--gold);
+}
+
+.tag-hero p {
+    font-size: 1.1rem;
+    color: var(--cream);
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .tag-hero h1 {
+        font-size: 2rem;
+    }
+}
+</style>

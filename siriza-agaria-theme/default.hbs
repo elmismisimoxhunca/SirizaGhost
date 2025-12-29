@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{meta_title}}</title>
+    
+    {{!-- Ghost outputs important style and meta data with this tag --}}
+    {{ghost_head}}
+    
+    {{!-- Theme CSS --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/style.css"}}">
+    
+    {{!-- Google Fonts --}}
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Spectral:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="{{body_class}}">
+    <div class="site-wrapper">
+        {{> header}}
+        
+        <main class="site-main">
+            {{{body}}}
+        </main>
+        
+        {{> footer}}
+    </div>
+    
+    {{!-- Ghost outputs important scripts and data with this tag --}}
+    {{ghost_foot}}
+    
+    <script src="{{asset "js/main.js"}}"></script>
+</body>
+</html>

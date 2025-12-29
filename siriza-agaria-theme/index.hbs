@@ -1,0 +1,70 @@
+{{!< default}}
+
+<section class="blog-hero">
+    <div class="blog-hero-content">
+        <h1>{{@site.title}}</h1>
+        <p>{{@site.description}}</p>
+    </div>
+</section>
+
+<section class="blog-posts">
+    {{#if posts}}
+        {{#if posts.length}}
+            <div class="posts-grid">
+                {{#foreach posts}}
+                    {{> post-card}}
+                {{/foreach}}
+            </div>
+            
+            <nav class="pagination">
+                {{#if pagination.prev}}
+                    <a href="{{page_url pagination.prev}}">← Anterior</a>
+                {{/if}}
+                
+                <span class="page-number">Página {{pagination.page}} de {{pagination.pages}}</span>
+                
+                {{#if pagination.next}}
+                    <a href="{{page_url pagination.next}}">Siguiente →</a>
+                {{/if}}
+            </nav>
+        {{/if}}
+    {{else}}
+        <div style="text-align: center; padding: 4rem 2rem;">
+            <h2>Aún no hay publicaciones</h2>
+            <p>Vuelve pronto para nuevo contenido.</p>
+        </div>
+    {{/if}}
+</section>
+
+<style>
+.blog-hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(212, 168, 71, 0.1);
+}
+
+.blog-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--cream);
+}
+
+.blog-hero p {
+    font-size: 1.25rem;
+    color: var(--cream);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .blog-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .blog-hero p {
+        font-size: 1rem;
+    }
+}
+</style>

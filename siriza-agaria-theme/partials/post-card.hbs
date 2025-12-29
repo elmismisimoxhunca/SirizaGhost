@@ -1,0 +1,31 @@
+<article class="post-card">
+    {{#if feature_image}}
+        <img src="{{feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" class="post-card-image">
+    {{else}}
+        <div class="post-card-image" style="background: linear-gradient(135deg, rgba(212, 168, 71, 0.1), rgba(232, 200, 118, 0.05));"></div>
+    {{/if}}
+    
+    <div class="post-card-content">
+        {{#if primary_tag}}
+            <div class="post-card-meta">{{primary_tag.name}}</div>
+        {{/if}}
+        
+        <h3 class="post-card-title">
+            <a href="{{url}}">{{title}}</a>
+        </h3>
+        
+        <p class="post-card-excerpt">{{excerpt}}</p>
+        
+        <div class="post-card-footer">
+            <div class="post-card-author">
+                {{#if primary_author}}
+                    {{#if primary_author.profile_image}}
+                        <img src="{{primary_author.profile_image}}" alt="{{primary_author.name}}" class="post-card-author-avatar">
+                    {{/if}}
+                    <span>{{primary_author.name}}</span>
+                {{/if}}
+            </div>
+            <div class="post-card-date">{{date format="MMM DD, YYYY"}}</div>
+        </div>
+    </div>
+</article>
